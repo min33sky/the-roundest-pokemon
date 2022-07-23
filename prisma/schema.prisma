@@ -16,10 +16,13 @@ model Vote {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
-  votedFor       Pokemon @relation("votesFor", fields: [votedForId], references: [id]) // 투표 한 포켓몬
+  votedFor       Pokemon @relation("votesFor", fields: [votedForId], references: [id]) // 투표에서 승리한 포켓몬
   votedForId     Int
-  votedAgainst   Pokemon @relation("votesAgainst", fields: [votedAgainstId], references: [id]) // 투표 대상 반대쪽 포켓몬
+  votedAgainst   Pokemon @relation("votesAgainst", fields: [votedAgainstId], references: [id]) // 투표에서 패배한 포켓몬
   votedAgainstId Int
+
+  @@index([votedAgainstId])
+  @@index([votedForId])
 }
 
 model Pokemon {
@@ -27,6 +30,6 @@ model Pokemon {
   name      String
   spriteUrl String // 이미지 주소
 
-  VoteFor     Vote[] @relation("votesFor") // 투표 받음
-  VoteAgainst Vote[] @relation("votesAgainst") // 투표 받지 못함
+  VoteFor     Vote[] @relation("votesFor") // 투표에서 승리
+  VoteAgainst Vote[] @relation("votesAgainst") // 투표에서 패배
 }

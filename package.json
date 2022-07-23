@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "server:dev": "pscale connect roundest-mon tm-dev --port 3309",
-    "server:prod": "pscale connect roundest-mon main --port 3309",
-    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
+    "db:dev": "pscale connect roundest-mon tm-dev --port 3309",
+    "db:prod": "pscale connect roundest-mon main --port 3309",
+    "db:seed": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\" ./scripts/fill-db.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

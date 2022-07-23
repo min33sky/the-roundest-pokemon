@@ -1,9 +1,10 @@
 import { PokemonClient } from 'pokenode-ts';
 
+//! src 폴더 밖에 위치하므로 '@'를 사용할 수 없다. 상대주소 그대로 적자
 import { prisma } from '../src/backend/utils/prisma';
 
 /**
- *## Pokemon API의 data를 내가 만든 DB에 등록하기
+ *## Pokemon API의 data를 내가 만든 DB에 등록하는 함수
  */
 const doBackfill = async () => {
   const pokeApi = new PokemonClient();

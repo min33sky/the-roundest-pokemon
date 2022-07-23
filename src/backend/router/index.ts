@@ -1,5 +1,4 @@
 import * as trpc from '@trpc/server';
-import { PokemonClient } from 'pokenode-ts';
 import { z } from 'zod';
 import { prisma } from '@/backend/utils/prisma';
 
