@@ -4,6 +4,7 @@ import { getOptionsForVote } from '@/utils/getRandomPokemon';
 import { trpc } from '@/utils/trpc';
 import { useEffect, useState } from 'react';
 import { inferQueryResponse } from './api/trpc/[trpc]';
+import Image from 'next/image';
 
 export default function Home() {
   const [firstId, setFirstId] = useState(0);
@@ -42,12 +43,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center">
-      <h1 className="text-2xl">Which Pokémon is the Roundest?</h1>
+    <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 p-4">
+      <h1 className="text-2xl font-bold">Which Pokémon is the Roundest?</h1>
 
-      <div className="p-2"></div>
-
-      <section className="flex h-96 max-w-2xl items-center justify-between rounded border p-8">
+      <section className="flex h-96 max-w-2xl items-center justify-between rounded-md border border-gray-600 p-8">
         {!firstPokemon.isLoading &&
           firstPokemon.data &&
           !secondPokemon.isLoading &&
@@ -79,7 +78,11 @@ const PokemonListing: React.FC<{
 }> = ({ pokemon, vote }) => {
   return (
     <article className="flex flex-col items-center space-y-2 ">
-      <img className="h-64 w-64" src={pokemon.sprites.front_default ?? ''} />
+      <Image
+        width={256}
+        height={256}
+        src={pokemon.sprites.front_default ?? ''}
+      />
 
       <div className="mt-[-2rem] text-center text-xl capitalize">
         {pokemon.name}
