@@ -31,6 +31,10 @@ export default function Home() {
     setSecondId(second);
   };
 
+  /**
+   * ## 투표 함수
+   * @param selected 투표 할 포켓몬의 ID
+   */
   const voteForRoundest = (selected?: number) => {
     if (selected === firstId) {
       voteMutation.mutate({ votedFor: firstId, votedAgainst: secondId });
@@ -50,8 +54,6 @@ export default function Home() {
     firstPokemon.data &&
     !secondPokemon.isLoading &&
     secondPokemon.data;
-
-  // const isLoaded = false;
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 p-4">
